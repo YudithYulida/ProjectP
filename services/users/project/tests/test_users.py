@@ -108,10 +108,10 @@ class TestUserService(BaseTestCase):
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 200)
             self.assertIn('yudith', data['data']['username'])
-            self.assertIn('yudithhinostroza@upeu.edu.pe', data['data']['email'])
+            self.assertIn(
+                'yudithhinostroza@upeu.edu.pe', data['data']['email'])
             self.assertIn('success', data['status'])
 
-            
     def test_single_user_no_id(self):
         """Asegurando que se produce un error si no se ha proveido el id."""
         with self.client:
@@ -141,10 +141,14 @@ class TestUserService(BaseTestCase):
             self.assertEqual(len(data['data']['users']), 2)
             self.assertIn('yudith', data['data']['users'][0]['username'])
             self.assertIn(
-                'yudithhinostroza@upeu.edu.pe', data['data']['users'][0]['email'])
+                'yudithhinostroza@upeu.edu.pe',
+                data['data']['users'][0]['email']
+                )
             self.assertIn('yulida', data['data']['users'][1]['username'])
             self.assertIn(
-                'yudithhinostrozaquispe@gmail.com', data['data']['users'][1]['email'])
+                'yudithhinostrozaquispe@gmail.com',
+                data['data']['users'][1]['email']
+                )
             self.assertIn('success', data['status'])
 
     def test_main_no_users(self):
@@ -176,7 +180,10 @@ class TestUserService(BaseTestCase):
         with self.client:
             response = self.client.post(
                 '/',
-                data=dict(username='yudith', email='yudithhinostroza@upeu.edu.pe'),
+                data=dict(
+                    username='yudith',
+                    email='yudithhinostroza@upeu.edu.pe'
+                    ),
                 follow_redirects=True
             )
             self.assertEqual(response.status_code, 200)
