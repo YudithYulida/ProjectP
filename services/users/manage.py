@@ -48,7 +48,7 @@ def seed_db():
 
 @cli.command()
 def cov():
-    """Ejecuta las pruebas unitarias con coverage."""
+    """Ejecuta las pruebas unitarias"""
     tests = unittest.TestLoader().discover('project/tests')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
