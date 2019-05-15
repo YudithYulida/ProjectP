@@ -15,8 +15,7 @@ def create_app(script_info=None):
     app = Flask(__name__)
 
     # habilitandp CORS
-    CORS(app) # nuevo
-    
+    CORS(app)
     # estableciendo configuración
     app_settings = os.getenv('APP_SETTINGS')
     app.config.from_object(app_settings)
