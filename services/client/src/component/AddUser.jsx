@@ -27,7 +27,7 @@ const AddUser = (props) => {
             </div>
             <input
               type="submit"
-              className="input is-link is-fullwidth"
+              className="button is-link is-fullwidth"
               value="Enviar"
             />
         </form>

@@ -19,19 +19,19 @@ class App extends Component {
     };
     addUser(event) {
       event.preventDefault();
-      const data ={
+      const data = {
         username: this.state.username,
         email: this.state.email
       };
-      axios.post(`http://localhost/users`, data)
+      axios.post(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`, data)
       .then((res) => { 
         this.getUsers();
         this.setState({username: '', email: ''}); 
       })
       .catch((err) => { console.log(err); });
     };
-    handleChange(event){
-      const obj ={};
+    handleChange(event) {
+      const obj = {};
       obj[event.target.name] = event.target.value;
       this.setState(obj);
     };
@@ -39,7 +39,7 @@ class App extends Component {
       this.getUsers();
     };
     getUsers() {
-        axios.get(`http://localhost/users`) 
+        axios.get(`${process.env.REACT_APP_USERS_SERVICE_URL}/users`) 
         .then((res) =>{ this.setState({ users: res.data.data.users }); })
         .catch((err) =>{ console.log(err); });
     };         
