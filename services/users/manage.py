@@ -5,7 +5,7 @@ import coverage
 
 from flask.cli import FlaskGroup
 
-from project import create_app, db 
+from project import create_app, db
 from project.api.models import User 
 
 
@@ -42,8 +42,8 @@ def test():
 @cli.command('seed_db')
 def seed_db():
     """Seeds the database."""
-    db.session.add(User(username='yulida', email="yudithhinostrozaquispe@gmail.com"))
-    db.session.add(User(username='yudith', email="yudithhinostroza@upeu.edu.pe"))
+    db.session.add(User(username='yulida', email="yudithhinostrozaquispe@gmail.com", password='greaterthaneight2'))
+    db.session.add(User(username='yudith', email="yudithhinostroza@upeu.edu.pe", password='greaterthaneight'))
     db.session.commit()
 
 @cli.command()
